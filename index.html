@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tennis.css" />
+    
+    <title>Tennis Score Board</title>
+    <script>
+       class Player {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+    </script>
+        
+</head>
+<body>
+    <div class="scoreboard">
+        <div class="playerInfo">
+            <div class="playerName">Nadal</div>
+            <div class="sets">0</div>
+            <div class="games">0</div>
+            <div class="points">0</div>
+        </div>
+        <div class="playerInfo">
+            <div class="playerName">Federer</div>
+            <div class="sets">0</div>
+            <div class="games">0</div>
+            <div class="points">0</div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let nameOfPlayerOne = window.prompt("Wie is de eerste speler");
+        var playerOne = new Player(nameOfPlayerOne);
+
+        let nameOfPlayerTwo = window.prompt("Tegen wie speelt "+ playerOne.name + "?");
+        var playerTwo = new Player(nameOfPlayerTwo);
+
+        window.alert("New match: " + playerOne.name + " vs " + playerTwo.name );
+    </script>
+</body>
+</html>

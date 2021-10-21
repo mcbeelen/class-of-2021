@@ -1,0 +1,31 @@
+.scoreboard {
+    background-color: #66ff66;
+    padding: 10px;
+    width: 90%;
+    margin: 0px auto;
+}
+
+.playerInfo {
+    display: flex;
+    column-gap: 10px;
+}
+
+.playerInfo .playerName {
+    flex-grow: 8;
+}
+
+.playerInfo .sets, 
+.playerInfo .games, 
+.playerInfo .points {
+    
+    text-align: center;
+    flex-basis:0;
+    padding: 4px;
+}
+
+
+
+.scoreboard div {
+    border: 1px dotted white;
+    font-size: 10vw;
+}
