@@ -19,13 +19,13 @@
 <body>
     <div class="scoreboard">
         <div class="playerInfo">
-            <div class="playerName">Nadal</div>
+            <div class="playerName" id="nameOfPlayerOne">Nadal</div>
             <div class="sets">0</div>
             <div class="games">0</div>
             <div class="points">0</div>
         </div>
         <div class="playerInfo">
-            <div class="playerName">Federer</div>
+            <div class="playerName" id="nameOfPlayerTwo">Federer</div>
             <div class="sets">0</div>
             <div class="games">0</div>
             <div class="points">0</div>
@@ -40,8 +40,9 @@
 
         let nameOfPlayerTwo = window.prompt("Tegen wie speelt "+ playerOne.name + "?");
         var playerTwo = new Player(nameOfPlayerTwo);
+        document.getElementById("nameOfPlayerOne").innerText = nameOfPlayerOne;
+        document.getElementById("nameOfPlayerTwo").innerText = nameOfPlayerTwo;
 
-        window.alert("New match: " + playerOne.name + " vs " + playerTwo.name );
     </script>
 </body>
 </html>

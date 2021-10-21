@@ -3,11 +3,14 @@
     padding: 10px;
     width: 90%;
     margin: 0px auto;
+    color: white;
+    font-size: 10vw;
 }
 
 .playerInfo {
     display: flex;
-    column-gap: 10px;
+    column-gap: 20px;
+    margin-bottom: 10px;
 }
 
 .playerInfo .playerName {
@@ -27,5 +30,5 @@
 
 .scoreboard div {
     border: 1px dotted white;
-    font-size: 10vw;
+    
 }
