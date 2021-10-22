@@ -19,13 +19,13 @@
 <body>
     <div class="scoreboard">
         <div class="playerInfo">
-            <div class="playerName" id="nameOfPlayerOne">Nadal</div>
+            <div class="playerName" id="nameOfPlayerOne">Player ONE</div>
             <div class="sets">0</div>
             <div class="games">0</div>
             <div class="points">0</div>
         </div>
         <div class="playerInfo">
-            <div class="playerName" id="nameOfPlayerTwo">Federer</div>
+            <div class="playerName" id="nameOfPlayerTwo">Player TWO</div>
             <div class="sets">0</div>
             <div class="games">0</div>
             <div class="points">0</div>
@@ -33,15 +33,23 @@
     </div>
 
 
+    <div class="umpireControlPanel">
+            <button id="scoredByPlayerOne" title="Player ONE" name="Player ONE">Player ONE</button>
+            <button id="scoredByPlayerTwo" title="Player TWO" name="Player TWO">Player TWO</button>
+    </div>
+
 
     <script>
-        let nameOfPlayerOne = window.prompt("Wie is de eerste speler");
-        var playerOne = new Player(nameOfPlayerOne);
+        function startNewMatch() {
+            let nameOfPlayerOne = window.prompt("Wie is de eerste speler");
+            var playerOne = new Player(nameOfPlayerOne);
 
-        let nameOfPlayerTwo = window.prompt("Tegen wie speelt "+ playerOne.name + "?");
-        var playerTwo = new Player(nameOfPlayerTwo);
-        document.getElementById("nameOfPlayerOne").innerText = nameOfPlayerOne;
-        document.getElementById("nameOfPlayerTwo").innerText = nameOfPlayerTwo;
+            let nameOfPlayerTwo = window.prompt("Tegen wie speelt "+ playerOne.name + "?");
+            var playerTwo = new Player(nameOfPlayerTwo);
+            document.getElementById("nameOfPlayerOne").innerText = nameOfPlayerOne;
+            document.getElementById("nameOfPlayerTwo").innerText = nameOfPlayerTwo;
+
+        }
 
     </script>
 </body>

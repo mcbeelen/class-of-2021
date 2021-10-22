@@ -1,16 +1,36 @@
-.scoreboard {
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.scoreboard, .umpireControlPanel {
     background-color: #66ff66;
     padding: 10px;
-    width: 90%;
-    margin: 0px auto;
+    margin: 0px auto 20px;
     color: white;
     font-size: 10vw;
 }
 
-.playerInfo {
+.scoreboard {
+    width: 90vw;
+    align-self: start;
+}
+
+.playerInfo, .umpireControlPanel {
     display: flex;
     column-gap: 20px;
     margin-bottom: 10px;
+}
+
+.umpireControlPanel {
+    justify-content: center;
+    align-self: flex-end;
+}
+
+.umpireControlPanel button{
+    font-size: 5vw;
 }
 
 .playerInfo .playerName {
@@ -20,15 +40,11 @@
 .playerInfo .sets, 
 .playerInfo .games, 
 .playerInfo .points {
-    
     text-align: center;
-    flex-basis:0;
+    flex-basis: 0;
     padding: 4px;
 }
 
-
-
 .scoreboard div {
     border: 1px dotted white;
-    
 }
