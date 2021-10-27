@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharpies</title>
+</head>
+<body>
+
+
+    <script>
+// Syntax hints:        
+// () : Gebruikt bij een functie: 
+//      1) om te definieren welke parameters er beschikbaar zijn en 
+//      2) bij een aanroep van de functie variabelen aan die parameters toe te wijzen.
+// [] : Synoniem voor 'new Array()''
+//      Of om een property van een object op naam te benaderen.
+// {} : Bepaalt de scope van een stuk code
+
+        class Sharpie {
+
+            constructor(colorName) {
+                this.color = colorName;
+            }
+
+            size = "small";
+
+            changeSize(newSize) {
+                this.size = newSize;
+            }
+        }
+
+        let firstSharpie = new Sharpie("green");
+        firstSharpie.changeSize("Large")
+
+        let some = new Sharpie("blue")
+        let third = new Sharpie("red")
+        let dsoifhdsiufh76734kjhbdshjkf = new Sharpie("yellow")
+        let fifth = new Sharpie("brown")
+
+        let today = new Date();
+        console.log(today);
+
+
+        // console.log(firstSharpie.color);
+        // console.log(firstSharpie.size);
+        // 
+        // console.log(firstSharpie.size);
+
+        // let etui = new Array();
+        let etui = [firstSharpie, some];
+        etui.push(dsoifhdsiufh76734kjhbdshjkf)
+       
+
+        console.log(etui.length)
+
+        console.table(etui)
+
+        
+
+
+        function nieuweSharpieProcedure() {
+
+            let kleurVanDeNieuweSharpie = window.prompt("welke kleur?");
+            let deNieuweSharpier = new Sharpie(kleurVanDeNieuweSharpie);
+            etui.push(deNieuweSharpier);
+
+            console.table(etui);
+            
+        }
+
+
+        /**
+         *  Verwijder de laatst toegevoegde Sharpie van een gevraagde kleur 
+         */
+        function verwijderEenSharpieProcedure() {
+            let kleurVanDeSharpieDieVerwijderdMoetWorden = window.prompt("welke kleur?");
+
+            // We wilden de laatst toegevoegde Sharpie met een bepaalde kleur verwijderen,
+            // daarom moeten we van achter zoeken.
+            // Dat kan niet standaard in een Array, vandaar de truc om de Array eerst om te draaien 
+            // en dan van vorenaf te gaan zoeken.
+            etui.reverse()
+
+            // We gaan een-voor-een de sharpies bekijken en controleren of die de gevraagde kleur heeft
+            const indexVanDeSharpieDieVerwijderdMoetWorden = etui.findIndex((eenSharpieInDeEtui) => 
+                eenSharpieInDeEtui.color == kleurVanDeSharpieDieVerwijderdMoetWorden
+            );
+            
+            // Als er één gevonden is, dan halen we die uit de etui
+            if (indexVanDeSharpieDieVerwijderdMoetWorden >= 0) {
+                etui.splice(indexVanDeSharpieDieVerwijderdMoetWorden, 1)
+            } 
+            // Voor de goede orde zetten we de etui weer in de oorspronkelijke volgorde.
+            etui.reverse()
+
+            if (indexVanDeSharpieDieVerwijderdMoetWorden == -1) {
+                window.alert(`Er kon geen Sharpie met de kleur '${kleurVanDeSharpieDieVerwijderdMoetWorden}' gevonden worden!`);
+                window.alert("We hebben alleen maar: " + etui.map((it) => `'${it.color}'`).join(","))
+            }
+
+            // Laat zien hoe de inhoud van de etui is na afloop van deze procedure
+            console.table(etui);
+
+        }
+
+
+
+
+    </script>
+
+    <button onclick="nieuweSharpieProcedure()">Voeg sharpie toe</button>
+    <button onclick="verwijderEenSharpieProcedure()">Verwijder een sharpie</button>
+
+    
+</body>
+</html>
