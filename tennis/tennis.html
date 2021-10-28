@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tennis.css" />
+    
+    <title>Tennis Score Board</title>        
+</head>
+<body>
+    <div class="scoreboard">
+        <div class="playerInfo">
+            <div class="playerName js-player-one-name" id="nameOfPlayerOne" data-player="first">Player ONE</div>
+            <div class="sets js-sets-won-by-player-one">_</div>
+            <div class="games" id="gamesOfPlayerOne">_</div>
+            <div class="points" id="pointsOfPlayerOne">__</div>
+        </div>
+        <div class="playerInfo">
+            <div class="playerName js-player-two-name" id="nameOfPlayerTwo" data-player="second">Player TWO</div>
+            <div class="sets js-sets-won-by-player-two">_</div>
+            <div class="games" id="gamesOfPlayerTwo">_</div>
+            <div class="points" id="pointsOfPlayerTwo">__</div>
+        </div>
+    </div>
+
+
+    <div class="umpireControlPanel">
+        <div id="matchControl">
+            <button id="startNewMatchButton" title="Start a new match" onclick="startNewMatch()">Start a new match</button>
+        </div>
+        <div id="pointControls" style="display: none;">
+            <button id="scoredByPlayerOne" title="Player ONE" name="Player ONE" 
+                class="js-player-one-name"
+                onclick="handlePointScoredByPlayerOne()"
+                data-player="first">Player ONE</button>
+            <button id="scoredByPlayerTwo" title="Player TWO" name="Player TWO" 
+                class="js-player-two-name"
+                onclick="handlePointScoredByPlayerTwo()"
+                data-player="second">Player TWO</button>
+        </div>
+    </div>
+
+
+    <script src="tennis.js"></script>
+
+    <script>
+
+        /**
+         * An Announcer has the responsibility to communicate changes in score to the outside world
+         **/
+        class Announcer {
+
+            announceNewMatch = function announceNewMatch(match) {
+                this.#updatePlayerNames("js-player-one-name", match.playerOne.name)
+                this.#updatePlayerNames("js-player-two-name", match.playerTwo.name)
+
+                this.#updateScoredSets(match.getNumberOfSetsWonByPlayerOne(), match.getNumberOfSetsWonByPlayerTwo());
+                this.#updateScoredGames(match.getNumberOfGamesWonByPlayerOneInCurrentSet(), match.getNumberOfGamesWonByPlayerTwoInCurrentSet());
+                this.#updateScoredPoints(match.getNumberOfPointsWonByPlayerOneInCurrentGame(), match.getNumberOfPointsWonByPlayerTwoInCurrentGame());
+            }
+            
+            updateScoreboard(someMatch) {
+                this.#updateScoredSets(someMatch.getNumberOfSetsWonByPlayerOne(), someMatch.getNumberOfSetsWonByPlayerTwo())
+                this.#updateScoredGames(someMatch.getNumberOfGamesWonByPlayerOneInCurrentSet(), someMatch.getNumberOfGamesWonByPlayerTwoInCurrentSet())
+                this.#updateScoredPoints(someMatch.getNumberOfPointsWonByPlayerOneInCurrentGame(), someMatch.getNumberOfPointsWonByPlayerTwoInCurrentGame())
+            }
+
+
+            #updatePlayerNames = function(selectorForElementsWithPlayerName, nameToDisplay) {
+                let elementsToUpdateWithNameOfPlayer = document.getElementsByClassName(selectorForElementsWithPlayerName);
+                for (let i = 0 ; i < elementsToUpdateWithNameOfPlayer.length ; i++) {
+                    elementsToUpdateWithNameOfPlayer[i].innerText = nameToDisplay;
+                }
+
+                // document.querySelectorAll('[data-player="first"]').forEach((element) => element.innerText = playerOne.name);
+                // document.querySelectorAll('[data-player="second"]').forEach((element) => element.innerText = playerTwo.name);
+
+            }
+
+
+
+            #updateScoredSets = function updateScoredSets(setsWonByPlayerOne, setsWonByPlayerTwo) {
+                document.getElementsByClassName("js-sets-won-by-player-one")[0].innerText = setsWonByPlayerOne;
+                document.getElementsByClassName("js-sets-won-by-player-two")[0].innerText = setsWonByPlayerTwo;
+            }
+
+            #updateScoredGames = function updateScoredSets(gamesWonByPlayerOne, gamesWonByPlayerTwo) {
+                document.getElementById("gamesOfPlayerOne").innerText = gamesWonByPlayerOne;
+                document.getElementById("gamesOfPlayerTwo").innerText = gamesWonByPlayerTwo;
+            }
+
+            #updateScoredPoints = function updateScoredSets(pointsOfPlayerOne, pointsOfPlayerTwo) {
+                document.getElementById("pointsOfPlayerOne").innerText = pointsOfPlayerOne;
+                document.getElementById("pointsOfPlayerTwo").innerText = pointsOfPlayerTwo;
+            }
+        }
+
+
+        const announcer = new Announcer()
+        const umpire = new Umpire(announcer)
+
+        function startNewMatch() {
+            umpire.startNewMatch()
+
+            document.getElementById("matchControl").style.display = "none";
+            document.getElementById("pointControls").style.display = "block";
+        }
+
+        function handlePointScoredByPlayerOne() {
+            umpire.handlePointScoredByPlayerOne()
+        }
+
+        function handlePointScoredByPlayerTwo() {
+            umpire.handlePointScoredByPlayerTwo()
+        }
+
+    </script>
+</body>
+</html>

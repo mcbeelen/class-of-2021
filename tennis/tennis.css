@@ -13,6 +13,9 @@ body {
     font-size: 10vw;
 }
 
+
+
+
 .scoreboard {
     width: 90vw;
     align-self: start;
@@ -22,6 +25,7 @@ body {
     display: flex;
     column-gap: 20px;
     margin-bottom: 10px;
+    align-items: center;
 }
 
 .umpireControlPanel {
@@ -29,20 +33,31 @@ body {
     align-self: flex-end;
 }
 
-.umpireControlPanel button{
+.umpireControlPanel button {
     font-size: 6vw;
 }
 
 .playerInfo .playerName {
     flex-grow: 8;
+    flex-basis: 16em;
+    font-size: 6vw;
 }
 
 .playerInfo .sets, 
 .playerInfo .games, 
 .playerInfo .points {
-    text-align: center;
-    flex-basis: 0;
     padding: 4px;
+    text-align: center;
+    font-family: monospace;
+}
+
+.playerInfo .sets, 
+.playerInfo .games {
+    flex-basis: 1em;
+}
+
+.playerInfo .points {
+    flex-basis: 2em;
 }
 
 .scoreboard div {
